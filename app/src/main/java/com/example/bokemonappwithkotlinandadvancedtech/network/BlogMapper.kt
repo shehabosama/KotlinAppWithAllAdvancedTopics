@@ -5,7 +5,7 @@ import com.example.bokemonappwithkotlinandadvancedtech.model.Blog
 import com.example.bokemonappwithkotlinandadvancedtech.util.EntityMapper
 import javax.inject.Inject
 
-class NetworkMapper
+class BlogMapper
 @Inject
 constructor() : EntityMapper<BlogNetworkEntity , Blog>
 {

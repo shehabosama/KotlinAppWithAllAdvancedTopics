@@ -4,7 +4,7 @@ import com.example.bokemonappwithkotlinandadvancedtech.model.Blog
 import com.example.bokemonappwithkotlinandadvancedtech.util.EntityMapper
 import javax.inject.Inject
 
-class CacheMapper @Inject constructor():EntityMapper<BlogCashEntity , Blog> {
+class BlogCacheMapper @Inject constructor():EntityMapper<BlogCashEntity , Blog> {
     override fun mapFromEntity(entity: BlogCashEntity): Blog {
         return Blog(id = entity.id ,
             title = entity.title ,

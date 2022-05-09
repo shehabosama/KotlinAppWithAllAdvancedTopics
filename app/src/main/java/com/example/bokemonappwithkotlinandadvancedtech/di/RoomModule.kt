@@ -3,11 +3,11 @@ package com.example.bokemonappwithkotlinandadvancedtech.di
 import android.content.Context
 import androidx.room.Room
 import com.example.bokemonappwithkotlinandadvancedtech.db.BlogDao
-import com.example.bokemonappwithkotlinandadvancedtech.db.BlogDatabase
+import com.example.bokemonappwithkotlinandadvancedtech.db.Database
+import com.example.bokemonappwithkotlinandadvancedtech.db.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -17,14 +17,19 @@ import javax.inject.Singleton
 object RoomModule {
     @Singleton
     @Provides
-    fun provedBlogDb(@ApplicationContext context: Context):BlogDatabase{
-        return Room.databaseBuilder(context , BlogDatabase::class.java , BlogDatabase.DATABASE_NAME )
+    fun provedBlogDb(@ApplicationContext context: Context):Database{
+        return Room.databaseBuilder(context , Database::class.java , Database.DATABASE_NAME )
             .fallbackToDestructiveMigration().build()
     }
 
     @Singleton
     @Provides
-    fun provideBlogDAO(blogDatabase: BlogDatabase):BlogDao{
-        return blogDatabase.blogDao()
+    fun provideBlogDAO(database: Database):BlogDao{
+        return database.blogDao()
+    }
+    @Singleton
+    @Provides
+    fun provideUserDAO(database: Database):UserDao{
+        return database.userDao()
     }
 }
